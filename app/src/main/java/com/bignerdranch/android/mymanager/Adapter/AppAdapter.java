@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v7.widget.ActivityChooserView;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -14,8 +15,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bignerdranch.android.mymanager.AppInfo;
 import com.bignerdranch.android.mymanager.R;
@@ -25,6 +28,7 @@ import org.w3c.dom.Text;
 
 import java.util.List;
 
+import static android.R.attr.taskOpenEnterAnimation;
 import static android.R.attr.transitionName;
 
 /**
@@ -79,6 +83,8 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.AppHolder> {
         protected TextView mTxtName;
         protected TextView mTxtApk;
         protected CardView vCard;
+        private final Button mBtnExtract;
+        private final Button mBtnShare;
 
         public AppHolder(View v) {
             super(v);
@@ -88,6 +94,8 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.AppHolder> {
 
             mTxtName = (TextView) v.findViewById(R.id.txtName);
             mTxtApk = (TextView) v.findViewById(R.id.txtApk);
+            mBtnExtract = (Button) v.findViewById(R.id.btnExtract);
+            mBtnShare = (Button) v.findViewById(R.id.btnShare);
 
 
         }
@@ -99,6 +107,27 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.AppHolder> {
 
         CardView cardView = holder.vCard;
         final ImageView appIcon = holder.mImageIcon;
+
+        Button mBtnExtract = holder.mBtnExtract;
+        Button mBtnShare = holder.mBtnShare;
+//        mBtnExtract.setBackgroundColor(appPreferences.getPrimaryColorPref());
+//        mBtnShare.setBackgroundColor(appPreferences.getPrimaryColorPref());
+
+        //Extract
+        mBtnExtract.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "Extract", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //Share
+        mBtnShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "Share", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
